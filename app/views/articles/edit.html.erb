@@ -1,26 +1,9 @@
 <h1>Edit an article</h1>
 
 <% if @article.errors.any? %>
-<h2>Errors on saving this article</h2>
-<ul>
-  <% @article.errors.full_messages.each do |err| %>
-  <li><%= err %></li>
-  <% end %>
-</ul>
+<%= render 'errors' %>
 <% end %>
 
+<%= render 'form' %>
 
-<%= form_with(model: @article, local: true) do |f| %>
-<p>
-  <%= f.label :title %> </br>
-  <%= f.text_field :title %>
-</p>
-<p>
-  <%= f.label :description %> </br>
-  <%= f.text_area :description %>
-</p>
-<p>
-  <%= f.submit %>
-</p>
-<% end %>
 <p><%= link_to 'Back', articles_path %></p>
