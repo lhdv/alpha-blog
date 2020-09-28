@@ -11,6 +11,9 @@
 
   <body class="d-flex flex-column">
     <%= render 'layouts/navbar' %>
-    <%= yield %>
+    <div id="page-content">
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
