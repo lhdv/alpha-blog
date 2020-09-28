@@ -1,9 +1,6 @@
-<h1>Create a new article</h1>
-
-<% if @article.errors.any? %>
-<%= render 'errors' %>
-<% end %>
-
-<%= render 'form' %>
-
-<p><%= link_to 'Back', articles_path %></p>
+<div id="page-content">
+  <h1 class="text-center mt-4">Create a new article</h1>
+  <div class="container">    
+    <%= render 'form' %>
+  </div>
+</div>
