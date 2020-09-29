@@ -11,6 +11,8 @@ class User < ApplicationRecord
   validates :email, length: { maximum: 105 }
   validate :validates_user_email
 
+  before_save { self.email = email.downcase }
+
   private
 
   def validates_user_email
