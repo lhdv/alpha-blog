@@ -27,6 +27,6 @@
       <%= f.submit(@user.new_record? ? 'Sign up' : 'Update account', class: "btn btn-outline-primary") %>
     </div>
     <% end %>
-    <p class="text-center">[ <%= link_to 'Cancel and Go Back', articles_path, class: "text-info" %> ]</p>
+    <p class="text-center">[ <%= link_to 'Cancel and Go Back', @user, class: "text-info" %> ]</p>
   </div>
 </div>
