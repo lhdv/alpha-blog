@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   # The line below is the same as the above
   # resources :articles, only: [:show, :index, :create, :new, :edit, :update, :destroy]
   resources :articles
+
+  get 'signup', to: 'users#new'
+  # post 'users', to: 'users#create'
+  resources :users, except: [:new]
 end
