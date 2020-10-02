@@ -3,11 +3,11 @@ class SessionsController < ApplicationController
   end
   
   def create
-    @user = User.find_by(email: session_params[:email].downcase).try(:authenticate, session_params[:password])
-    if @user
-      session[:user_id] = @user.id
-      flash[:notice] = "Welcome back #{@user.username}"
-      redirect_to @user
+    user = User.find_by(email: session_params[:email].downcase).try(:authenticate, session_params[:password])
+    if user
+      session[:user_id] = user.id
+      flash[:notice] = "Welcome back #{user.username}"
+      redirect_to user
     else
       # When you render a partial there's no HTTP request made so
       # the flash[:notice] could not happen.
