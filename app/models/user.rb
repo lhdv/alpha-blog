@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   
-  has_many :articles
+  has_many :articles, dependent: :destroy
   has_secure_password
 
   validates :username, presence: true
