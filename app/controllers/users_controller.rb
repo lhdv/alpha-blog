@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :require_user, except: [:index, :show]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 5)
