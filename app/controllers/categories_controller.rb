@@ -24,6 +24,8 @@ class CategoriesController < ApplicationController
   def show
     # To make the test pass a render could solve or just create the html.erb of the action
     # render html: 'show'
+
+    @category = Category.find(params[:id])
   end
 
   private
