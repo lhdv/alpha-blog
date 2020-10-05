@@ -2,6 +2,8 @@ class CategoriesController < ApplicationController
   def index
     # To make the test pass a render could solve or just create the html.erb of the action
     # render html: 'index'
+
+    @categories = Category.paginate(page: params[:page], per_page: 5)
   end
 
   def new
