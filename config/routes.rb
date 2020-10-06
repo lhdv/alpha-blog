@@ -29,5 +29,5 @@ Rails.application.routes.draw do
   #
   # Categories routes
   #
-  resources :categories, except: [:edit, :update, :destroy]
+  resources :categories
 end
