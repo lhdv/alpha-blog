@@ -1,6 +1,14 @@
 class CategoriesController < ApplicationController
   before_action :require_admin, except: [:show, :index]
 
+  def show
+    # To make the test pass a render could solve or just create the html.erb of the action
+    # render html: 'show'
+
+    @category = Category.find(params[:id])
+    @articles = @category.articles.paginate(page: params[:page], per_page: 5)
+  end
+
   def index
     # To make the test pass a render could solve or just create the html.erb of the action
     # render html: 'index'
@@ -25,12 +33,19 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def show
-    # To make the test pass a render could solve or just create the html.erb of the action
-    # render html: 'show'
-
+  def edit
     @category = Category.find(params[:id])
-    @articles = @category.articles.paginate(page: params[:page], per_page: 5)
+  end
+
+  def update
+    @category = Category.find(params[:id])
+    if @category.update(category_params)    
+      flash[:notice] = "Category was updated successfully"
+      redirect_to @category
+    else
+      # Will render the 'edit' method from controller  
+      render 'edit'
+    end
   end
 
   private

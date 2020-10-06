@@ -1,20 +1,26 @@
 <h1 class="text-center mt-4">Category <%= @category.name %></h1>
-
-<% if logged_in? && current_user.admin? %>
-  <div class="text-center mt-4">
-    <%= link_to 'Edit category name', edit_category_path(@category), class: "btn btn-outline-info" %>
-    |
-    <%= link_to 'Delete me!', category_path(@category), method: :delete, data: { confirm: "Are you REALLY sure?"}, class: "btn btn-outline-danger" %>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-8">
+      <%= render 'layouts/messages' %>
+    </div>
   </div>
-<% end %>
+  <% if logged_in? && current_user.admin? %>
+    <div class="text-center mt-4">
+      <%= link_to 'Edit category name', edit_category_path(@category), class: "btn btn-outline-info" %>
+      |
+      <%= link_to 'Delete me!', category_path(@category), method: :delete, data: { confirm: "Are you REALLY sure?"}, class: "btn btn-outline-danger" %>
+    </div>
+  <% end %>
 
-<h3 class="text-center mt-4">Articles</h3>
-<div class="flickr_pagination mt-4">
-  <%= will_paginate @articles, container: false %>
-</div>
-<%= render 'articles/list', articles: @articles %>
-<div class="flickr_pagination mb-4">
-  <%= will_paginate @articles, container: false %>
-</div>
+  <h3 class="text-center mt-4">Articles</h3>
+  <div class="flickr_pagination mt-4">
+    <%= will_paginate @articles, container: false %>
+  </div>
+  <%= render 'articles/list', articles: @articles %>
+  <div class="flickr_pagination mb-4">
+    <%= will_paginate @articles, container: false %>
+  </div>
 
-<p class="text-center">[ <%= link_to 'Go Back', categories_path, class: "text-info" %> ]</p>
+  <p class="text-center">[ <%= link_to 'Go Back', categories_path, class: "text-info" %> ]</p>
+</div>
