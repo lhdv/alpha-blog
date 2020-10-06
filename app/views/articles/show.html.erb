@@ -5,8 +5,12 @@
       <%= render 'layouts/messages' %>
       <div class="card text-center shadow mb-5 bg-white rounded">
         <div class="card-header font-italic">
+          By <%= link_to @article.user.username, user_path(@article.user) %>
           <%= link_to gravatar_for(@article.user), user_path(@article.user)%>
-          by <%= link_to @article.user.username, user_path(@article.user) %>
+          <% if @article.categories.any? %>
+          <%# The following expects a partial called _category.html.erb in views/categories directory %>
+          <div class="mt-2"><%= render @article.categories %></div>
+          <% end %>
         </div>
         <div class="card-body">
           <div class="card-text"><%= simple_format(@article.description) %></div>
