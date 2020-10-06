@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :require_admin, except: [:show, :index]
+
   def index
     # To make the test pass a render could solve or just create the html.erb of the action
     # render html: 'index'
@@ -34,5 +36,12 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def require_admin
+    if !(logged_in? && current_user.admin?)
+      flash[:alert] = 'Only admins can create/edit/delete categories'
+      redirect_to categories_path
+    end
   end
 end
